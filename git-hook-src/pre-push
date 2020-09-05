@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ -z "${BASE_DIR}" ]];
+then
+  echo "You need to run"
+  printf "\tcd m68kassembler && source setup.sh\n"
+  echo "to set up the pre-push hooks."
+  exit 1
+fi
+
+"${BASE_DIR}"/lint.sh
+
+"${BASE_DIR}"/test.sh
