@@ -1,68 +1,155 @@
 from enum import Enum
 
 
-class RegisterDirect:
+class AddressingModeCategories(Enum):
+    DATA = 0
+    MEMORY = 1
+    CONTROL = 2
+    ALTERABLE = 3
+    DATA_ALTERABLE = 4
+    MEMORY_ALTERABLE = 5
+    CONTROL_ALTERABLE = 6
+
+
+class AddressingMode:
+    categories = []
+
+
+class RegisterDirect(AddressingMode):
     pass
 
 
 class DataRegisterDirect(RegisterDirect):
-    pass
+    categories = [
+        AddressingModeCategories.DATA,
+        AddressingModeCategories.ALTERABLE,
+        AddressingModeCategories.DATA_ALTERABLE,
+    ]
 
 
 class AddressRegisterDirect(RegisterDirect):
-    pass
+    categories = [
+        AddressingModeCategories.ALTERABLE,
+    ]
 
 
-class AbsoluteData:
+class AbsoluteData(AddressingMode):
     pass
 
 
 class AbsoluteShortData(AbsoluteData):
-    pass
+    categories = [
+        AddressingModeCategories.DATA,
+        AddressingModeCategories.MEMORY,
+        AddressingModeCategories.CONTROL,
+        AddressingModeCategories.ALTERABLE,
+        AddressingModeCategories.DATA_ALTERABLE,
+        AddressingModeCategories.MEMORY_ALTERABLE,
+        AddressingModeCategories.CONTROL_ALTERABLE,
+    ]
 
 
 class AbsoluteLongData(AbsoluteData):
-    pass
+    categories = [
+        AddressingModeCategories.DATA,
+        AddressingModeCategories.MEMORY,
+        AddressingModeCategories.CONTROL,
+        AddressingModeCategories.ALTERABLE,
+        AddressingModeCategories.DATA_ALTERABLE,
+        AddressingModeCategories.MEMORY_ALTERABLE,
+        AddressingModeCategories.CONTROL_ALTERABLE,
+    ]
 
 
-class RegisterIndirect:
-    pass
-
+class RegisterIndirect(AddressingMode):
+    categories = [
+        AddressingModeCategories.DATA,
+        AddressingModeCategories.MEMORY,
+        AddressingModeCategories.CONTROL,
+        AddressingModeCategories.ALTERABLE,
+        AddressingModeCategories.DATA_ALTERABLE,
+        AddressingModeCategories.MEMORY_ALTERABLE,
+        AddressingModeCategories.CONTROL_ALTERABLE,
+    ]
 
 class PostIncrementRegisterIndirect(RegisterIndirect):
-    pass
+    categories = [
+        AddressingModeCategories.DATA,
+        AddressingModeCategories.MEMORY,
+        AddressingModeCategories.ALTERABLE,
+        AddressingModeCategories.DATA_ALTERABLE,
+        AddressingModeCategories.MEMORY_ALTERABLE,
+    ]
 
 
 class PreDecrementRegisterIndirect(RegisterIndirect):
-    pass
+    categories = [
+        AddressingModeCategories.DATA,
+        AddressingModeCategories.MEMORY,
+        AddressingModeCategories.ALTERABLE,
+        AddressingModeCategories.DATA_ALTERABLE,
+        AddressingModeCategories.MEMORY_ALTERABLE,
+    ]
 
 
 class RegisterIndirectWithOffset(RegisterIndirect):
-    pass
+    categories = [
+        AddressingModeCategories.DATA,
+        AddressingModeCategories.MEMORY,
+        AddressingModeCategories.CONTROL,
+        AddressingModeCategories.ALTERABLE,
+        AddressingModeCategories.DATA_ALTERABLE,
+        AddressingModeCategories.MEMORY_ALTERABLE,
+        AddressingModeCategories.CONTROL_ALTERABLE,
+    ]
 
 
 class RegisterIndirectWithOffsetAndIndex(RegisterIndirect):
-    pass
+    categories = [
+        AddressingModeCategories.DATA,
+        AddressingModeCategories.MEMORY,
+        AddressingModeCategories.CONTROL,
+        AddressingModeCategories.ALTERABLE,
+        AddressingModeCategories.DATA_ALTERABLE,
+        AddressingModeCategories.MEMORY_ALTERABLE,
+        AddressingModeCategories.CONTROL_ALTERABLE,
+    ]
 
 
 class PCRelativeWithOffset(RegisterIndirect):
-    pass
+    categories = [
+        AddressingModeCategories.DATA,
+        AddressingModeCategories.MEMORY,
+        AddressingModeCategories.CONTROL,
+    ]
 
 
 class PCRelativeWithOffsetAndIndex(RegisterIndirect):
-    pass
+    categories = [
+        AddressingModeCategories.DATA,
+        AddressingModeCategories.MEMORY,
+        AddressingModeCategories.CONTROL,
+    ]
 
 
-class Immediate:
-    pass
+class Immediate(AddressingMode):
+    categories = [
+        AddressingModeCategories.DATA,
+        AddressingModeCategories.MEMORY,
+        AddressingModeCategories.CONTROL,
+    ]
 
 
-class QuickImmediate:
-    pass
+class QuickImmediate(AddressingMode):
+    categories = [
+        AddressingModeCategories.DATA,
+        AddressingModeCategories.MEMORY,
+        AddressingModeCategories.CONTROL,
+    ]
 
 
-class ImpliedRegister:
-    pass
+class ImpliedRegister(AddressingMode):
+    pass  # TODO understand this
 
 
 class AddressingModes(Enum):
