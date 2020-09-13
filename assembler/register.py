@@ -41,7 +41,7 @@ class Registers(Enum):
     A6 = Register(["A6"], 32, RegisterType.ADDRESS)
     A7 = Register(["A7", "SP", "USP", "SSP"], 32, RegisterType.ADDRESS)
 
-    PC = Register(["PC"], 32, RegisterType.ADDRESS)
+    PC = Register(["PC"], 32, RegisterType.PC)
 
     SR = Register(["SR"], 16, RegisterType.STATUS)
     SB = Register(["SB"], 8, RegisterType.STATUS)
