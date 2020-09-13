@@ -3,8 +3,13 @@ import logging
 from typing import List
 
 
-def assemble_files(files: List[open]) -> str:
-    return ''
+def assemble_files(_files: List[open]) -> bytes:
+    """
+    Assemble given files into a series of bytes
+    :param _files: The files to assemble
+    :return: The assembled bytes
+    """
+    return ''.encode('utf-8')
 
 
 if __name__ == '__main__':
@@ -19,11 +24,11 @@ if __name__ == '__main__':
 
     args = arg_parser.parse_args()
 
-    level = logging.WARNING
+    LOG_LEVEL = logging.WARNING
     if 0 < args.verbose <= 1:
-        level = logging.INFO
+        LOG_LEVEL = logging.INFO
     if 1 < args.verbose <= 2:
-        level = logging.DEBUG
-    logging.basicConfig(level=level)
+        LOG_LEVEL = logging.DEBUG
+    logging.basicConfig(level=LOG_LEVEL)
 
     print(assemble_files(args.files))
